@@ -5,7 +5,7 @@ Do you tarnish your Clojure with the occasional hint of Java?  Have you become i
 In your `project.clj` or `~/.lein/profiles.clj`, add this:
 
 ```clj
-{:plugins [[lein-virgil "0.1.9"]]}
+{:plugins [[lein-virgil "0.1.10"]]}
 ```
 
 Now, as if by magic, every time the `.java` files on your `:java-source-paths` change, they will be recompiled within your REPL and all the namespaces that rely on those files will be reloaded.  A helpful message will be printed out, including any compilation errors you may have introduced along the way (these are written to `stdout`, so they may show up in a different buffer than your REPL).
@@ -17,7 +17,7 @@ Happy tarnishing.
 For [Boot](http://boot-clj.com/), add this to your `build.boot`:
 
 ```clj
-(set-env! :dependencies '[[virgil "0.1.9"]
+(set-env! :dependencies '[[virgil "0.1.10"]
                           ...])
 
 (require '[virgil.boot :refer [javac*]])
@@ -48,6 +48,13 @@ task.
 - `:options` — a vector of strings that is passed to Java compiler, same as to
   `javac` binary. E.g., you can use `(javac* :options ["-Xlint:unchecked"])` to
   print additional warnings from the compiler.
+
+### Local installation as a plugin
+
+Install the [lein-localrepo](https://github.com/kumarshantanu/lein-localrepo) plugin, replace the 'x.y.z' with your own version number and run:
+```bash
+lein localrepo install target/virgil-x.y.z.jar lein-virgil x.y.z
+```
 
 ### license
 
